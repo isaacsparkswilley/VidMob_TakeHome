@@ -8,6 +8,9 @@ This class is used to calculate a value based on the output of the parser.
 import operator
 class Calculator:
 
+    # Dictionary mapping operator strings to operator functions
+    ops = { '+': operator.add, '-': operator.sub, '*': operator.mul, '/': operator.truediv }
+
     '''
     DESC: Calculate a number based on output of parser.
     IN: (List) List of seperated numbers and operators
@@ -28,7 +31,7 @@ class Calculator:
         if len(inputList) == 1:
             return inputList[0]
         else:
-            # Throw error
+            pass # Throw error
 
     '''
     DESC: Perform all calculations within parentheses, modifying the list of numbers and operators in place.
