@@ -28,6 +28,9 @@ class Parser:
         # output list
         out = []
 
+        # remove whitespace from inputString
+        inputString = "".join(inputString.split())
+
         while inputString != '':
             # get next number
             match = re.match(numRegex, inputString)
