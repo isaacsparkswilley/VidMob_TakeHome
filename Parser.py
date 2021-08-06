@@ -15,6 +15,12 @@ class Parser:
     # regex to use for validating operators
     opRegex = re.compile('[\+\-\*\/]')
 
+    # regex to use for validating open parentheses
+    openParenRegex = re.compile('[\(]')
+
+    # regex to use for validating close parentheses
+    closeParenRegex = re.compile('[\)]')
+
     '''
     DESC: Parse input string into a list of numbers and operators.
     IN: (String) Input from calculator CLI
@@ -22,18 +28,30 @@ class Parser:
     '''
     @staticmethod
     def parseInput(inputString):
-        numRegex = Parser.numRegex
-        opRegex = Parser.opRegex
-
         # output list
         out = []
+
+        # number of parentheses that have been opened but not closed
+        openParens = 0
 
         # remove whitespace from inputString
         inputString = "".join(inputString.split())
 
         while inputString != '':
+            # get open parens (which will always come before a number)
+            match = re.match(Parser.openParenRegex, inputString)
+            while match is not None:
+                # note number of opened parentheses
+                openParens += 1
+                # add paren to out
+                out.append(match.group())
+                # remove paren from inputString
+                inputString = inputString.replace(match.group(), "", 1)
+                # check for another paren
+                match = re.match(Parser.openParenRegex, inputString)
+
             # get next number
-            match = re.match(numRegex, inputString)
+            match = re.match(Parser.numRegex, inputString)
             if match is not None:
                 # cast number to float, add to out
                 out.append(float(match.group()))
@@ -42,8 +60,20 @@ class Parser:
             else:
                 raise SyntaxError()
 
+            # get close parens (which will always come after a number)
+            match = re.match(Parser.closeParenRegex, inputString)
+            while match is not None:
+                # note number of closed parentheses
+                openParens -= 1
+                # add paren to out
+                out.append(match.group())
+                # remove paren from inputString
+                inputString = inputString.replace(match.group(), "", 1)
+                # check for another paren
+                match = re.match(Parser.closeParenRegex, inputString)
+
             # get next operator
-            match = re.match(opRegex, inputString)
+            match = re.match(Parser.opRegex, inputString)
             if match is not None:
                 # add operator to out
                 out.append(match.group())
@@ -52,4 +82,8 @@ class Parser:
             elif inputString != '':
                 raise SyntaxError()
 
+        # ensure evenly placed parentheses
+        if openParens != 0:
+            raise SyntaxError("Mismatched Parentheses")
+        
         return out
