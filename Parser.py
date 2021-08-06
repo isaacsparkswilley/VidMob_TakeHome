@@ -13,7 +13,7 @@ class Parser:
     numRegex = re.compile('-?(?:\d*\.\d+|\d+)')
 
     # regex to use for validating operators
-    opRegex = re.compile('[\+\-]')
+    opRegex = re.compile('[\+\-\*\/]')
 
     '''
     DESC: Parse input string into a list of numbers and operators.
