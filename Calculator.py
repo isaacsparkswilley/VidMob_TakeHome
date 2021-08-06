@@ -45,7 +45,8 @@ class Calculator:
 
     '''
     DESC: Perform all operations in inputList using operators defined by opString.
-    IN: (String) A string containing all operators that should be used in this pass of the list
+    IN: (List) List of seperated numbers and operators, after having all parentheses removed
+        (String) A string containing all operators that should be used in this pass of the list (eg '*/')
     OUT: N/A - List is modified in place, replacing all numbers an operators with result of calculation
     '''
     @staticmethod
