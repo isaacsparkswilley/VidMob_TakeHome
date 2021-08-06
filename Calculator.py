@@ -41,8 +41,29 @@ class Calculator:
     '''
     @staticmethod
     def calculateParens(inputList):
-        pass
+        # find first open paren
+        try:
+            openParenIndex = inputList.index('(')
+        # if error is thrown, there are no parens in list (parser guarantees that all open parens are closed)
+        except ValueError:
+            return
 
+        # find last closed paren
+        for i,v in enumerate(reversed(inputList)):
+            if v == ')':
+                closeParenIndex = len(inputList)-1-i
+                break
+
+        # calculate value inside parentheses
+        innerValue = Calculator.calculate(inputList[openParenIndex+1 : closeParenIndex])
+
+        # replace open paren with result
+        inputList[openParenIndex] = innerValue
+
+        # delete through close paren
+        for _ in range(openParenIndex, closeParenIndex):
+            del inputList[openParenIndex+1]
+        
     '''
     DESC: Perform all operations in inputList using operators defined by opString.
     IN: (List) List of seperated numbers and operators, after having all parentheses removed
