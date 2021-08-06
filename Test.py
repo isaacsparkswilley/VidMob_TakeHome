@@ -17,7 +17,9 @@ testCases = [
     ('-5+-8--11*2', 9),\
     ('-.32\t/.5', -0.64),\
     ('2+-+-4', None),\
-    ('19 + cinnamon', None) ]
+    ('19 + cinnamon', None),\
+    ('(4-2)*3.5',7) ,\
+    ('((4-2)*3.5)',7)]
 
 # iterate through each test case
 for case in testCases:
