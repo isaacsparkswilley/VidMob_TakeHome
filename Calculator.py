@@ -51,4 +51,24 @@ class Calculator:
     '''
     @staticmethod
     def calculateByOperators(inputList, opString):
-        pass
+        # index in list
+        i = 0
+        
+        while i < len(inputList):
+            # if we are on an operator
+            if isinstance(inputList[i], str) and inputList[i] in opString:
+
+                # perform operation
+                result = Calculator.ops[inputList[i]](inputList[i-1], inputList[i+1])
+                
+                # replace first number with result
+                inputList[i-1] = result
+                
+                # delete operator and second number from list
+                for _ in range(0,2):
+                    del inputList[i]
+                    
+            # otherwise, we are not on an operator in opString
+            else:
+                i += 1
+                
