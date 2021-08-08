@@ -1,12 +1,12 @@
 import operator
 class Calculator:
-'''
-VidMob Take-Home Calculator Class
-Isaac Sparks-Willey
-August 5, 2021
+    '''
+    VidMob Take-Home Calculator Class
+    Isaac Sparks-Willey
+    August 5, 2021
 
-This class is used to calculate a value based on the output of the parser.
-'''
+    This class is used to calculate a value based on the output of the parser.
+    '''
 
     # Dictionary mapping operator strings to operator functions
     ops = { '+': operator.add, '-': operator.sub, '*': operator.mul, '/': operator.truediv }
