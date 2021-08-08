@@ -39,7 +39,7 @@ class Parser:
         '''
         Parse input string into a list of numbers and operators.
 
-        Paramters
+        Parameters
         ---------
         inputString : str
             Input from calculator CLI
@@ -47,7 +47,7 @@ class Parser:
         Returns
         -------
         out : List
-            List of seperated numbers and operators
+            List of separated numbers and operators
         '''
         
         # output list

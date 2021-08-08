@@ -36,7 +36,7 @@ class Calculator:
         Parameters
         ----------
         intputList : List
-            List of seperated numbers and operators
+            List of separated numbers and operators
         containsParentheses : bool, optional (default True)
             Whether or not the list contains parentheses
 
@@ -70,7 +70,7 @@ class Calculator:
         Parameters
         ----------
         inputList : List
-            List of seperated numbers and operators
+            List of separated numbers and operators
 
         Returns
         -------
@@ -118,7 +118,7 @@ class Calculator:
         Parameters
         ----------
         inputList : List
-            List of seperated numbers and operators, containing no parentheses
+            List of separated numbers and operators, containing no parentheses
         opString  : str
             A string containing all operators that should be used in this pass of the list (eg '*/')
 
