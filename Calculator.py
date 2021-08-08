@@ -55,7 +55,7 @@ class Calculator:
         while openParens:
             openParenIndex = openParens.pop()
             
-            # initialize closeParenIndex (a close paren is guarenteed to be found after parsing)
+            # initialize closeParenIndex (a close paren is guaranteed to be found after parsing)
             closeParenIndex = -1
             
             # find first close paren after openParenIndex
