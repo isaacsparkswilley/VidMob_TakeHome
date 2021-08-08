@@ -1,32 +1,53 @@
+'''
+VidMob Take-Home Parser Class
+Isaac Sparks-Willey
+August 5, 2021
+'''
+
 import re
 class Parser:
     '''
-    VidMob Take-Home Parser Class
-    Isaac Sparks-Willey
-    August 5, 2021
+    Parser
+    
+    This class is used to parse the calculator's CLI input, validating it's syntax and converting the string into
+    a list of numbers and operators.
 
-    This class is used to parse the calculator's CLI input, validating it's syntax
-    and converting the single line string into a list of numbers and operators.
+    Class Variables
+    ---------------
+    numRegex : str
+        regex to use for validating numbers
+    opRegex : str
+        regex to use for validating operators
+    openParenRegex : str
+        regex to use for validating open parentheses
+    closeParenRegex : str
+        regex to use for validating close parentheses
+
+    Static Methods
+    --------------
+    parseInput(inputString)
+        Parse input string into a list of numbers and operators, raising SyntaxError if formatted incorrectly.
     '''
 
-    # regex to use for validating numbers
     numRegex = re.compile('-?(?:\d*\.\d+|\d+)')
-
-    # regex to use for validating operators
     opRegex = re.compile('[\+\-\*\/]')
-
-    # regex to use for validating open parentheses
     openParenRegex = re.compile('[\(]')
-
-    # regex to use for validating close parentheses
     closeParenRegex = re.compile('[\)]')
 
     @staticmethod
     def parseInput(inputString):
         '''
-        DESC: Parse input string into a list of numbers and operators.
-        IN: (String) Input from calculator CLI
-        OUT: (List) List of seperated numbers and operators
+        Parse input string into a list of numbers and operators.
+
+        Paramters
+        ---------
+        inputString : str
+            Input from calculator CLI
+
+        Returns
+        -------
+        out : List
+            List of seperated numbers and operators
         '''
         
         # output list
