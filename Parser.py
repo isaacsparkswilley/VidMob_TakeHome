@@ -59,7 +59,7 @@ class Parser:
                 # remove number from inputString
                 inputString = inputString.replace(match.group(), "", 1)
             else:
-                raise SyntaxError()
+                raise SyntaxError("Invalid Input")
 
             # get close parens (which will always come after a number)
             match = re.match(Parser.closeParenRegex, inputString)
@@ -81,7 +81,7 @@ class Parser:
                 # remove operator from input string
                 inputString = inputString.replace(match.group(), "", 1)
             elif inputString != '':
-                raise SyntaxError()
+                raise SyntaxError("Invalid Syntax")
 
         # ensure evenly placed parentheses
         if openParens != 0:
