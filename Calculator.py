@@ -34,7 +34,7 @@ class Calculator:
         if len(inputList) == 1:
             return inputList[0]
         else:
-            pass # Throw error
+            raise SyntaxError("Incorrectly formatted list passed to Calculator.calculate().")
 
     @staticmethod
     def calculateParens(inputList):
