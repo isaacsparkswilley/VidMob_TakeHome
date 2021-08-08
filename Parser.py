@@ -1,13 +1,13 @@
-'''
-VidMob Take-Home Parser Class
-Isaac Sparks-Willey
-August 5, 2021
-
-This class is used to parse the calculator's CLI input, validating it's syntax
-and converting the single line string into a list of numbers and operators.
-'''
 import re
 class Parser:
+    '''
+    VidMob Take-Home Parser Class
+    Isaac Sparks-Willey
+    August 5, 2021
+
+    This class is used to parse the calculator's CLI input, validating it's syntax
+    and converting the single line string into a list of numbers and operators.
+    '''
 
     # regex to use for validating numbers
     numRegex = re.compile('-?(?:\d*\.\d+|\d+)')
@@ -21,13 +21,14 @@ class Parser:
     # regex to use for validating close parentheses
     closeParenRegex = re.compile('[\)]')
 
-    '''
-    DESC: Parse input string into a list of numbers and operators.
-    IN: (String) Input from calculator CLI
-    OUT: (List) List of seperated numbers and operators
-    '''
     @staticmethod
     def parseInput(inputString):
+        '''
+        DESC: Parse input string into a list of numbers and operators.
+        IN: (String) Input from calculator CLI
+        OUT: (List) List of seperated numbers and operators
+        '''
+        
         # output list
         out = []
 
