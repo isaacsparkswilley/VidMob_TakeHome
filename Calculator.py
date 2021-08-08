@@ -14,12 +14,14 @@ class Calculator:
     '''
     DESC: Calculate a number based on output of parser.
     IN: (List) List of seperated numbers and operators
+        (Optional Bool) Whether or not the list contains parentheses (defaults to true)
     OUT: (Float) Result after calculation.
     '''
     @staticmethod
-    def calculate(inputList):
-        # First, perform all calculations in parentheses
-        Calculator.calculateParens(inputList)
+    def calculate(inputList, containsParentheses=True):
+        # First, perform all calculations in parentheses if present
+        if containsParentheses:
+            Calculator.calculateParens(inputList)
         
         # Next, perform all multiplication and division
         Calculator.calculateByOperators(inputList, '*/')
@@ -41,28 +43,38 @@ class Calculator:
     '''
     @staticmethod
     def calculateParens(inputList):
-        # find first open paren
-        try:
-            openParenIndex = inputList.index('(')
-        # if error is thrown, there are no parens in list (parser guarantees that all open parens are closed)
-        except ValueError:
-            return
+        # stack to store indices of open parens
+        openParens = []
 
-        # find last closed paren
-        for i,v in enumerate(reversed(inputList)):
-            if v == ')':
-                closeParenIndex = len(inputList)-1-i
-                break
+        # find all open parentheses in inputList
+        for i,v in enumerate(inputList):
+            if v == '(':
+                openParens.append(i)
 
-        # calculate value inside parentheses
-        innerValue = Calculator.calculate(inputList[openParenIndex+1 : closeParenIndex])
+        # while there are still open parens
+        while openParens:
+            openParenIndex = openParens.pop()
+            
+            # initialize closeParenIndex (a close paren is guarenteed to be found after parsing)
+            closeParenIndex = -1
+            
+            # find first close paren after openParenIndex
+            for i,v in enumerate(inputList[openParenIndex+1:]):
+                if v == ')':
+                    closeParenIndex = openParenIndex + 1 + i
+                    break
 
-        # replace open paren with result
-        inputList[openParenIndex] = innerValue
+            # calculate result within parentheses
+            innerResult = Calculator.calculate(
+                inputList[openParenIndex+1:closeParenIndex], containsParentheses=False)
 
-        # delete through close paren
-        for _ in range(openParenIndex, closeParenIndex):
-            del inputList[openParenIndex+1]
+            # replace openParen with result
+            inputList[openParenIndex] = innerResult
+
+            # delete through close paren
+            for _ in range(openParenIndex, closeParenIndex):
+                del inputList[openParenIndex+1]
+            
         
     '''
     DESC: Perform all operations in inputList using operators defined by opString.
