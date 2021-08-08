@@ -56,6 +56,9 @@ testCases = [
     ('((8-5)', None),\
     ('(3+3))', None) ]
 
+# bool to store if any cases failed
+hasFailures = False
+
 # iterate through each test case
 for case in testCases:
     # print test case
@@ -74,11 +77,18 @@ for case in testCases:
     # print actual result
     print("Actual Result: " + str(result))
 
-    # print successfulness and newline
+    # print successfulness and separator
     if case[1] is None and result == "Error":
         print("Success!")
     elif result == case[1]:
         print("Success!")
     else:
         print("Failure...")
-    print()
+        hasFailure = True
+    print('----------------------')
+
+# print whether any cases failed
+if hasFailures:
+    print("Not all test cases were successful.")
+else:
+    print("All test cases were successful!")
