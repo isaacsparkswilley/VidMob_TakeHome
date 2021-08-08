@@ -1,23 +1,49 @@
+'''
+VidMob Take-Home Calculator Class
+Isaac Sparks-Willey
+August 5, 2021
+'''
+
 import operator
 class Calculator:
     '''
-    VidMob Take-Home Calculator Class
-    Isaac Sparks-Willey
-    August 5, 2021
+    Calculator
 
     This class is used to calculate a value based on the output of the parser.
+
+    Class Variables
+    ---------------
+    ops : {str : function}
+        Dictionary mapping operator strings to operator functions
+
+    Static Methods
+    --------------
+    calculate(inputList, containsParentheses=True)
+        Calculate a number based on output of parser.
+    calculateParens(inputList)
+        Perform all calculations within parentheses, modifying the list of numbers and operators in place.
+    calculateByOperators(inputList, opString)
+        Perform all operations in inputList using operators defined by opString.
     '''
 
-    # Dictionary mapping operator strings to operator functions
     ops = { '+': operator.add, '-': operator.sub, '*': operator.mul, '/': operator.truediv }
 
     @staticmethod
     def calculate(inputList, containsParentheses=True):
         '''
-        DESC: Calculate a number based on output of parser.
-        IN: (List) List of seperated numbers and operators
-            (Optional Bool) Whether or not the list contains parentheses (defaults to true)
-        OUT: (Float) Result after calculation.
+        Calculate a number based on output of parser.
+
+        Parameters
+        ----------
+        intputList : List
+            List of seperated numbers and operators
+        containsParentheses : bool, optional (default True)
+            Whether or not the list contains parentheses
+
+        Returns
+        -------
+        out : float
+            Result after calculation.
         '''
         
         # First, perform all calculations in parentheses if present
@@ -39,10 +65,16 @@ class Calculator:
     @staticmethod
     def calculateParens(inputList):
         '''
-        DESC: Perform all calculations within parentheses, modifying the list of numbers and operators in place.
-        IN: (List) List of seperated numbers and operators
-        OUT: N/A - List is modified in place, replacing everything from opening paren to close paren with result of
-                    calculation
+        Perform all calculations within parentheses, modifying the list of numbers and operators in place.
+
+        Parameters
+        ----------
+        inputList : List
+            List of seperated numbers and operators
+
+        Returns
+        -------
+        N/A
         '''
         
         # stack to store indices of open parens
@@ -81,10 +113,18 @@ class Calculator:
     @staticmethod
     def calculateByOperators(inputList, opString):
         '''
-        DESC: Perform all operations in inputList using operators defined by opString.
-        IN: (List) List of seperated numbers and operators, after having all parentheses removed
-            (String) A string containing all operators that should be used in this pass of the list (eg '*/')
-        OUT: N/A - List is modified in place, replacing all numbers an operators with result of calculation
+        Perform all operations in inputList using operators defined by opString.
+
+        Parameters
+        ----------
+        inputList : List
+            List of seperated numbers and operators, containing no parentheses
+        opString  : str
+            A string containing all operators that should be used in this pass of the list (eg '*/')
+
+        Returns
+        -------
+        N/A
         '''
         
         # index in list
