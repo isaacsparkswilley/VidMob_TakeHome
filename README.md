@@ -27,14 +27,14 @@ THe calculator program was thoroughly tested using a variety of test cases. To s
 - Addition followed by subtraction
 - Subtraction followed by addition
 
-## Multiplication and Division
+### Multiplication and Division
 - Basic multiplication
 - Basic division
 - Division resulting in a decimal answer
 - Multiplication followed by division
 - Division followed by multiplication
 
-## Order of Operations and Parentheses
+### Order of Operations and Parentheses
 - Addition followed by multiplication
 - Addition in parentheses followed by multiplication
 - Multiplication followed by addition
@@ -43,18 +43,18 @@ THe calculator program was thoroughly tested using a variety of test cases. To s
 - Addition followed by nested parentheses: addition in parentheses followed by division
 - Addition followed by nested parentheses: subtraction followed by multiplication in parentheses
 
-## Negative Numbers and Decimals
+### Negative Numbers and Decimals
 - Addition of two decimals
 - Subtracting a decimal negative number from a positive whole number
 - Adding two negative numbers
 
-## Spacing
+### Spacing
 - Addition with spaces present
 - Addition with newlines present
 - Addition with tabs present
 - Addition with spaces, newlines, and tabs present
 
-## Invalid input
+### Invalid input
 - Multiple operators in a row
 - Invalid numbers
 - Random characters
